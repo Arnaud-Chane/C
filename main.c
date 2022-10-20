@@ -1,41 +1,33 @@
-
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
 
+int main() {
+  
+  float average;
+  int i;
+  int j;
+  int grades[2][5];  
 
-int main(){
-  double num1;
-  double num2;
-  char operator;
-  double answer;
+  grades[0][0] = 80;
+  grades[0][1] = 70;
+  grades[0][2] = 65;
+  grades[0][3] = 89;
+  grades[0][4] = 90;
 
-  printf("Number 1:");
-  scanf("%lf\n", &num1);
-  printf("Operator:");
-  scanf("%c\n", &operator);
-  printf("Number 2:");
-  scanf("%lf\n", &num2);
+  grades[1][0] = 85;
+  grades[1][1] = 80;
+  grades[1][2] = 80;
+  grades[1][3] = 82;
+  grades[1][4] = 87;
 
-  switch(operator)
-  {
-    case '+': answer = num1+num2;
-      break;
-    case '-': answer = num1-num2;
-      break;
-    case '*': answer = num1*num2;
-      break;
-    case '/': answer = num1/num2;
-      break;
-    default: goto fail;
-  }
+  for(i=0; i<2; i++){
+    average = 0;
+    for(j=0; j<5; j++){
+      average += grades[i][j];
+    };
 
-  printf("%d", &answer);
-  goto exit;
+    average = sizeof(grades)/sizeof(grades[0][0]);  
+    printf("Average is : %.4g\n", average);  
+  };
 
-  fail:
-    printf("Retry.");
-  exit:
-    return 0;
+  return 0;
 }
