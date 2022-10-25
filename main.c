@@ -1,21 +1,34 @@
 #include <stdio.h>
 
-int main() {
+void guessNumber(int guess){
 
-  char name1 = 'A';
-  char *pName1 = &name1;
+  int numMaxGuess = 5;
+  int numGuess = 0;
+  int playerGuess;
 
-  char name2 = 'A';
-  char *pName2 = &name2;
+  printf("Guess the number between 0 and 10.\n");
+  printf("Now guess it : ");
 
-  char test1 = *pName1;
-  char test2 = *pName2;
+  while(numGuess < numMaxGuess) {
+    scanf("%d", &playerGuess);
+    if(playerGuess < guess){
+      printf("Too low.\n");      
+    } else if(playerGuess > guess) {
+      printf("Too high.\n");
+    } else if(playerGuess == guess) {
+      printf("Wow, you guess right !\n");
+      goto win;
+    } else {
+      printf("I didn\'t catch it, retry");
+      numGuess--;
+    };
+    numGuess++;
+  } 
+  win:
+    printf("The game ends here.");
+}
 
-  if(test1 == test2){
-    printf("Good");
-  } else {
-    printf("Nope");
-  };
-  
+int main(){
+  guessNumber(9);
   return 0;
 }
