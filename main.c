@@ -1,68 +1,40 @@
 #include <stdio.h>
-#include <string.h>
 
-void guessWord(){
-  char * name = "Arnaud";
-  char playerGuess[20];
-  scanf("%s", &playerGuess);
+void guessWord() {
+  char wordToGuess[] = "arnaud";
+  char playerInput[20];
 
-  if(strncmp(playerGuess, name, 6) == 0){
-    printf("You won.\n");
-  } else {
-    printf("You loose.\n");
-  }
-}
+  int guessMax = 5;
+  int guessNb = 0;
+  while(guessNb < guessMax){    
 
-int main() {
+    scanf("%s", playerInput);
+    int i = 0;
+    while(i < 6){
+      // -- Start: attribute value using pointer --
+      char *pWordToGuess = &wordToGuess[i];
+      char vWordToGuess = *pWordToGuess;
+
+      char *pplayerInput = &playerInput[i];
+      char vplayerInput = *pplayerInput;
+      // -- End --
+
+      if(vWordToGuess == vplayerInput){
+        printf("%c", vWordToGuess);
+      } else {
+        printf("_");
+      };
+      i++;
+    };
+    printf("\n");
+  guessNb++;
+  };
+};
+
+
+int main(){
+
   guessWord();
+
   return 0;
 }
-
-// #include <stdio.h>
-
-// void guessWord(){
-//   int winOrLose = 0;
-
-//   char name[] = "Arnaud";
-//   printf("%s\n", name);
-
-//   char playerGuess[5];
-//   scanf("%s", playerGuess);
-
-//   int i = 0;
-
-//   while(i < 6){
-//     char *pLetterWordToGuess = &name[i];
-//     char letterWordToGuess = *pLetterWordToGuess;
-
-//     char *pLetterPlayerGuess = &playerGuess[i];
-//     char letterPlayerGuess = *pLetterPlayerGuess;
-
-//     printf("%c", letterWordToGuess);
-//     printf("%c", letterPlayerGuess);
-
-//     i++;
-
-//     if(letterWordToGuess != letterPlayerGuess) {
-//       printf("1");
-//       winOrLose = 1;
-//       goto lose;
-//     } else {
-//       printf("0");
-//     };
-//     i++;
-//   }
-
-//   if(winOrLose == 1){
-//     lose:
-//       printf("Not the same.");
-//   } else if(winOrLose == 0) {
-//     win:
-//       printf("Words are the same !");
-//   }
-// }
-
-// int main() {
-//   guessWord();
-//   return 0;
-// }
